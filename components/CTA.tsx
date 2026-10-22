@@ -1,8 +1,8 @@
 export default function CTA() {
   return (
-    <section data-sea className="relative isolate overflow-hidden min-h-[80svh] flex items-center section-pad bg-ink">
+    <section data-sea className="relative isolate overflow-hidden min-h-[80svh] flex items-center section-pad">
       <div className="absolute inset-0 grid-bg opacity-25" />
-      <div data-float className="absolute left-[20vw] top-[20%] w-[60vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(245,183,0,0.3),transparent_65%)] blur-[100px] opacity-40" />
+      <div data-float className="absolute left-[20vw] top-[20%] w-[60vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(59,155,255,0.3),transparent_65%)] blur-[100px] opacity-40" />
       <div data-float className="absolute right-[8%] bottom-[8%] w-[30vw] h-[30vw] rounded-full bg-[radial-gradient(circle,rgba(201,206,214,0.2),transparent_65%)] blur-[80px] opacity-40" />
 
       <div className="container-site relative z-10 text-center grid justify-items-center">

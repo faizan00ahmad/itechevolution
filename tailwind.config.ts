@@ -9,15 +9,15 @@ const config: Config = {
     extend: {
       colors: {
         ink: {
-          DEFAULT: "#08090C",
-          2: "#121419",
-          3: "#1A1D23",
+          DEFAULT: "#03060E",
+          2: "#0A1124",
+          3: "#111B33",
         },
         accent: {
-          DEFAULT: "#F5B700",
-          deep: "#A87A00",
-          dim: "rgba(245, 183, 0, 0.15)",
-          glow: "rgba(245, 183, 0, 0.4)",
+          DEFAULT: "#3B9BFF",
+          deep: "#6DB6FF",
+          dim: "rgba(59, 155, 255, 0.15)",
+          glow: "rgba(59, 155, 255, 0.4)",
         },
         silver: {
           DEFAULT: "#C9CED6",
@@ -30,7 +30,7 @@ const config: Config = {
           hover: "rgba(255, 255, 255, 0.08)",
           border: "rgba(255, 255, 255, 0.08)",
         },
-        paper: "#EEF0F2",
+        paper: "#03060E",
       },
       fontFamily: {
         display: ['"Space Grotesk"', "system-ui", "sans-serif"],
@@ -55,7 +55,7 @@ const config: Config = {
       },
       keyframes: {
         "pulse-dot": {
-          "50%": { boxShadow: "0 0 0 10px rgba(245, 183, 0, 0)" },
+          "50%": { boxShadow: "0 0 0 10px rgba(59, 155, 255, 0)" },
         },
         float: {
           "0%, 100%": { transform: "translateY(0)" },

@@ -1,12 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import dynamic from "next/dynamic";
 import SmoothScroll from "@/components/SmoothScroll";
-import Scene3D from "@/components/Scene3D";
-import SceneCircuit from "@/components/SceneCircuit";
-import SceneComet from "@/components/SceneComet";
-import FxSwitcher, { isEffect, type Effect } from "@/components/FxSwitcher";
 import ScrollAnimations from "@/components/ScrollAnimations";
 import Header from "@/components/Header";
 import Hero from "@/components/Hero";
@@ -24,34 +20,18 @@ const SceneUniverse = dynamic(() => import("@/components/SceneUniverse"), { ssr:
 
 export default function Home() {
   const [dialogOpen, setDialogOpen] = useState(false);
-  const [effect, setEffect] = useState<Effect>("cube");
-
-  useEffect(() => {
-    const q = new URLSearchParams(window.location.search).get("fx");
-    if (isEffect(q)) setEffect(q);
-  }, []);
-
-  function chooseEffect(e: Effect) {
-    setEffect(e);
-    const url = new URL(window.location.href);
-    url.searchParams.set("fx", e);
-    window.history.replaceState(null, "", url);
-  }
 
   return (
     <>
       <SmoothScroll />
-      {effect === "cube" && <Scene3D />}
-      {effect === "circuit" && <SceneCircuit />}
-      {effect === "comet" && <SceneComet />}
-      {effect === "universe" && <SceneUniverse />}
-      <FxSwitcher value={effect} onChange={chooseEffect} />
+      <div className="space-bg" aria-hidden="true" />
+      <SceneUniverse />
       <ScrollAnimations />
 
       <Header onOpenContact={() => setDialogOpen(true)} />
 
-      <main>
-        <Hero onOpenContact={() => setDialogOpen(true)} />
+      <main className="relative z-10">
+        <Hero />
         <Marquee />
         <About />
         <Services />

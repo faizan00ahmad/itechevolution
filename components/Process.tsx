@@ -9,14 +9,14 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" data-sea className="relative section-pad bg-paper overflow-clip">
+    <section id="process" data-sea className="relative section-pad overflow-clip">
       <div className="container-site">
         <header className="max-w-[860px] mb-[clamp(60px,8vw,100px)]">
           <p className="flex items-center gap-3 mb-6 font-display font-semibold text-[13px] tracking-[0.28em] uppercase text-accent">
             <span className="eyebrow-dot" />
             Our Process
           </p>
-          <h2 data-reveal className="font-display font-black text-[clamp(40px,6.8vw,96px)] leading-[0.92] tracking-[-0.03em] uppercase text-ink-2">
+          <h2 data-reveal className="font-display font-black text-[clamp(40px,6.8vw,96px)] leading-[0.92] tracking-[-0.03em] uppercase text-white">
             How It Works
           </h2>
         </header>
@@ -26,13 +26,13 @@ export default function Process() {
             <article
               key={s.num}
               data-stack-card
-              className="stack-card-sticky relative grid md:grid-cols-[auto_1fr] gap-7 p-[clamp(30px,4.5vw,56px)] rounded-3xl bg-gradient-to-br from-[#1B1E24] to-[#0E1014] border border-white/8 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.5)] text-white/70"
+              className="stack-card-sticky relative grid md:grid-cols-[auto_1fr] gap-7 p-[clamp(30px,4.5vw,56px)] rounded-3xl bg-gradient-to-br from-[#0F1A33]/80 to-[#070D1D]/75 backdrop-blur-md border border-white/10 shadow-[0_30px_60px_-30px_rgba(0,0,0,0.5)] text-white/70"
               style={{ "--i": i } as React.CSSProperties}
             >
-              <span className="absolute right-[clamp(22px,3.5vw,44px)] top-[clamp(16px,2.5vw,32px)] font-display font-black text-[clamp(54px,8vw,110px)] leading-none text-transparent [-webkit-text-stroke:1px_rgba(245,183,0,0.15)]">
+              <span className="absolute right-[clamp(22px,3.5vw,44px)] top-[clamp(16px,2.5vw,32px)] font-display font-black text-[clamp(54px,8vw,110px)] leading-none text-transparent [-webkit-text-stroke:1px_rgba(59,155,255,0.15)]">
                 {s.num}
               </span>
-              <div className="w-[68px] h-[68px] rounded-2xl bg-gradient-to-br from-accent to-[#C99400] flex items-center justify-center text-ink shadow-[0_16px_34px_-12px_rgba(245,183,0,0.55)]">
+              <div className="w-[68px] h-[68px] rounded-2xl bg-gradient-to-br from-accent to-[#1A64D0] flex items-center justify-center text-white shadow-[0_16px_34px_-12px_rgba(59,155,255,0.55)]">
                 <span className="font-display font-bold text-lg">{s.num}</span>
               </div>
               <div>

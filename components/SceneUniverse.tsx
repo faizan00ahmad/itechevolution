@@ -35,7 +35,7 @@ const FRAG = /* glsl */ `
   }
 `;
 
-const PALETTE = ["#F5B700", "#FFD34D", "#FFE9A6", "#C9CED6", "#FFFFFF", "#E8A400"].map((c) => new THREE.Color(c));
+const PALETTE = ["#3B9BFF", "#6DB6FF", "#A9D4FF", "#C9CED6", "#FFFFFF", "#8F84FF"].map((c) => new THREE.Color(c));
 
 function material(blending: THREE.Blending, tint: number) {
   return new THREE.ShaderMaterial({
@@ -80,9 +80,11 @@ export default function SceneUniverse() {
   }, []);
 
   return (
-    <div className="scene-layer" aria-hidden="true">
-      <canvas ref={canvasRef} className="fixed inset-0 w-screen h-screen pointer-events-none" />
-    </div>
+    <canvas
+      ref={canvasRef}
+      aria-hidden="true"
+      className="fixed inset-0 z-[1] w-screen h-screen pointer-events-none"
+    />
   );
 }
 
@@ -125,22 +127,21 @@ function start(canvas: HTMLCanvasElement, logo: HTMLImageElement) {
   geo.setAttribute("aSize", new THREE.BufferAttribute(sizes, 1));
 
   const glowMat = material(THREE.AdditiveBlending, 1);
-  const inkMat = material(THREE.NormalBlending, 0.62);
   const swarm = new THREE.Group();
-  swarm.add(new THREE.Points(geo, glowMat), new THREE.Points(geo, inkMat));
+  swarm.add(new THREE.Points(geo, glowMat));
   scene.add(swarm);
 
-  const STARS = mobile ? 500 : 1100;
+  const STARS = mobile ? 800 : 1800;
   const starPos = new Float32Array(STARS * 3);
   const starCol = new Float32Array(STARS * 3);
   const starSize = new Float32Array(STARS);
   const starGeo = new THREE.BufferGeometry();
   const starMat = material(THREE.AdditiveBlending, 1);
+  starMat.uniforms.uOpacity.value = 0.8;
   const stars = new THREE.Points(starGeo, starMat);
   scene.add(stars);
 
   let centers: number[] = [];
-  let light: boolean[] = [];
   let pixel = 1;
   let viewW = 1;
 
@@ -156,21 +157,13 @@ function start(canvas: HTMLCanvasElement, logo: HTMLImageElement) {
     viewW = viewH * camera.aspect;
     const scale = (h / viewH) * pixel;
     glowMat.uniforms.uScale.value = scale * 0.32;
-    inkMat.uniforms.uScale.value = scale * 0.32;
     starMat.uniforms.uScale.value = scale * 0.32;
 
-    const secs = Array.from(document.querySelectorAll<HTMLElement>("[data-sea]"));
-    centers = secs.map((s) => {
+    centers = Array.from(document.querySelectorAll<HTMLElement>("[data-sea]")).map((s) => {
       const r = s.getBoundingClientRect();
       return r.top + window.scrollY + r.height / 2;
     });
     centers[0] = Math.min(centers[0], h / 2);
-    light = secs.map((s) => {
-      const m = getComputedStyle(s).backgroundColor.match(/\d+/g);
-      if (!m) return false;
-      const [r, g, b] = m.map(Number);
-      return (0.299 * r + 0.587 * g + 0.114 * b) / 255 > 0.6;
-    });
 
     const span = (document.documentElement.scrollHeight / h) * viewH * 0.35 + 8;
     for (let i = 0; i < STARS; i++) {
@@ -200,7 +193,6 @@ function start(canvas: HTMLCanvasElement, logo: HTMLImageElement) {
   const born = performance.now();
   let lastY = window.scrollY;
   let energy = 0;
-  let lightMix = 0;
   const rot = new Float32Array(4);
 
   function place(s: Shape, i: number, t: number, out: number[]) {
@@ -286,11 +278,6 @@ function start(canvas: HTMLCanvasElement, logo: HTMLImageElement) {
     swarm.rotation.y = rot[0];
     swarm.rotation.x = rot[1];
 
-    const isLight = e < 0.5 ? light[k] : light[next];
-    lightMix += ((isLight ? 1 : 0) - lightMix) * 0.08;
-    glowMat.uniforms.uOpacity.value = (1 - lightMix) * 0.85;
-    inkMat.uniforms.uOpacity.value = lightMix * 0.95;
-    starMat.uniforms.uOpacity.value = (1 - lightMix) * 0.75;
     stars.position.y = (sy / window.innerHeight) * 1.6;
     stars.rotation.z = t * 0.004;
 
@@ -310,7 +297,6 @@ function start(canvas: HTMLCanvasElement, logo: HTMLImageElement) {
     geo.dispose();
     starGeo.dispose();
     glowMat.dispose();
-    inkMat.dispose();
     starMat.dispose();
     renderer.dispose();
   };

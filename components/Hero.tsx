@@ -1,15 +1,15 @@
-export default function Hero({ onOpenContact }: { onOpenContact?: () => void }) {
+export default function Hero() {
   return (
     <section
       id="home"
       data-sea
-      className="relative isolate overflow-hidden min-h-[max(100svh,720px)] flex flex-col justify-end pb-[clamp(48px,7vh,80px)] pt-[calc(84px+72px)] bg-ink"
+      className="relative isolate overflow-hidden min-h-[max(100svh,720px)] flex flex-col justify-end pb-[clamp(48px,7vh,80px)] pt-[calc(84px+72px)]"
     >
       {/* Grid background */}
-      <div className="absolute inset-0 grid-bg opacity-40" />
+      <div className="absolute inset-0 grid-bg opacity-20 [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
       {/* Ambient glows */}
-      <div data-float className="absolute -right-[20vw] -bottom-[30vw] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(245,183,0,0.35),transparent_65%)] blur-[100px] opacity-50" />
-      <div data-float className="absolute -left-[10vw] top-[20%] w-[40vw] h-[40vw] rounded-full bg-[radial-gradient(circle,rgba(201,206,214,0.2),transparent_65%)] blur-[100px] opacity-40" />
+      <div data-float className="absolute -right-[20vw] -bottom-[30vw] w-[60vw] h-[60vw] rounded-full bg-[radial-gradient(circle,rgba(59,155,255,0.35),transparent_65%)] blur-[100px] opacity-50" />
+      <div data-float className="absolute -left-[10vw] top-[20%] w-[40vw] h-[40vw] rounded-full bg-[radial-gradient(circle,rgba(122,108,255,0.28),transparent_65%)] blur-[100px] opacity-50" />
 
       <div className="container-site relative z-10">
         {/* Eyebrow */}

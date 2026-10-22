@@ -4,11 +4,11 @@
 
 @layer base {
   ::selection {
-    background: rgba(245, 183, 0, 0.3);
+    background: rgba(59, 155, 255, 0.3);
     color: #fff;
   }
   :focus-visible {
-    outline: 2px solid rgba(245, 183, 0, 0.6);
+    outline: 2px solid rgba(59, 155, 255, 0.6);
     outline-offset: 3px;
     border-radius: 4px;
   }
@@ -29,6 +29,7 @@
   body {
     line-height: 1.65;
     letter-spacing: 0.01em;
+    background: #03060E;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -63,69 +64,21 @@
   }
 }
 
-/* ============ 3D Cube ============ */
-.cube-wrap {
-  perspective: 800px;
-}
-.cube {
-  width: 80px;
-  height: 80px;
-  position: relative;
-  transform-style: preserve-3d;
-  transform: rotateX(-25deg) rotateY(45deg);
-}
-.cube__face {
-  position: absolute;
-  width: 80px;
-  height: 80px;
-  border: 1.5px solid rgba(220, 224, 230, 0.65);
-  background: linear-gradient(135deg, rgba(245, 183, 0, 0.08), rgba(201, 206, 214, 0.05));
-  box-shadow: inset 0 0 20px rgba(245, 183, 0, 0.08);
-}
-.cube__face--front  { transform: translateZ(40px); }
-.cube__face--back   { transform: rotateY(180deg) translateZ(40px); }
-.cube__face--right  { transform: rotateY(90deg) translateZ(40px); }
-.cube__face--left   { transform: rotateY(-90deg) translateZ(40px); }
-.cube__face--top    { transform: rotateX(90deg) translateZ(40px); }
-.cube__face--bottom { transform: rotateX(-90deg) translateZ(40px); }
-.cube__glow {
-  position: absolute;
-  inset: -50px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 183, 0, 0.3), transparent 65%);
-  filter: blur(24px);
-  transition: opacity 0.3s;
-}
-
-/* ============ Scene path ============ */
-.scene-layer {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 0;
-  z-index: 40;
+/* ============ Deep space backdrop ============ */
+.space-bg {
+  position: fixed;
+  inset: -10%;
+  z-index: 0;
   pointer-events: none;
+  background:
+    radial-gradient(40% 35% at 78% 22%, rgba(59, 155, 255, 0.16), transparent 70%),
+    radial-gradient(35% 40% at 12% 68%, rgba(122, 108, 255, 0.13), transparent 70%),
+    radial-gradient(30% 25% at 55% 92%, rgba(40, 200, 230, 0.08), transparent 70%),
+    radial-gradient(120% 90% at 50% 50%, #071028 0%, #03060e 70%);
+  animation: nebula-drift 40s ease-in-out infinite alternate;
 }
-.scene-layer svg {
-  position: absolute;
-  left: 0;
-  top: 0;
-  overflow: visible;
-}
-.scene-track {
-  fill: none;
-  stroke: rgba(245, 183, 0, 0.12);
-  stroke-width: 1;
-  stroke-dasharray: 4 16;
-  stroke-linecap: round;
-}
-.scene-trail {
-  fill: none;
-  stroke: url(#trail-grad);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-  filter: drop-shadow(0 0 8px rgba(245, 183, 0, 0.5));
+@keyframes nebula-drift {
+  to { transform: translate3d(-3%, 2%, 0) scale(1.06); }
 }
 
 /* ============ Scroll progress bar ============ */
@@ -137,12 +90,12 @@
   height: 3px;
   z-index: 100;
   pointer-events: none;
-  background: linear-gradient(90deg, #F5B700, #C9CED6, #F5B700);
+  background: linear-gradient(90deg, #3B9BFF, #C9CED6, #3B9BFF);
   background-size: 200% 100%;
   animation: gradient-shift 3s linear infinite;
   transform: scaleX(0);
   transform-origin: left;
-  box-shadow: 0 0 16px rgba(245, 183, 0, 0.6), 0 0 4px rgba(201, 206, 214, 0.4);
+  box-shadow: 0 0 16px rgba(59, 155, 255, 0.6), 0 0 4px rgba(201, 206, 214, 0.4);
 }
 
 @keyframes gradient-shift {
@@ -164,11 +117,11 @@
   height: 8px;
   border-radius: 50%;
   background: currentColor;
-  box-shadow: 0 0 0 4px rgba(245, 183, 0, 0.18);
+  box-shadow: 0 0 0 4px rgba(59, 155, 255, 0.18);
   animation: pulse-dot 2.4s ease-in-out infinite;
 }
 @keyframes pulse-dot {
-  50% { box-shadow: 0 0 0 10px rgba(245, 183, 0, 0); }
+  50% { box-shadow: 0 0 0 10px rgba(59, 155, 255, 0); }
 }
 
 /* ============ Scroll cue ============ */
@@ -187,7 +140,7 @@
   top: 0;
   width: 1px;
   height: 40%;
-  background: linear-gradient(to bottom, #F5B700, transparent);
+  background: linear-gradient(to bottom, #3B9BFF, transparent);
   animation: cue-scroll 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
 @keyframes cue-scroll {
@@ -197,9 +150,9 @@
 
 /* ============ Buttons ============ */
 .btn-glow {
-  background: linear-gradient(135deg, #FFC928, #F5B700 55%, #D99E00);
-  color: #08090C;
-  box-shadow: 0 10px 30px -10px rgba(245, 183, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  background: linear-gradient(135deg, #4FA6FF, #2C86F5 50%, #1A5FD0);
+  color: #fff;
+  box-shadow: 0 10px 30px -10px rgba(59, 155, 255, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35);
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -217,8 +170,8 @@
 }
 .btn-glow:hover::before { transform: translateY(0); }
 .btn-glow:hover {
-  color: #08090C;
-  box-shadow: 0 20px 44px -12px rgba(245, 183, 0, 0.75);
+  color: #03060E;
+  box-shadow: 0 20px 44px -12px rgba(59, 155, 255, 0.75);
   transform: translateY(-2px);
 }
 .btn-glow > * { position: relative; z-index: 1; }
@@ -245,7 +198,7 @@
 }
 .btn-ghost:hover::before { transform: translateY(0); }
 .btn-ghost:hover {
-  color: #08090C;
+  color: #03060E;
   border-color: #fff;
   transform: translateY(-2px);
 }
@@ -263,7 +216,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(600px circle at var(--mx) var(--my), rgba(245, 183, 0, 0.15), transparent 40%);
+  background: radial-gradient(600px circle at var(--mx) var(--my), rgba(59, 155, 255, 0.15), transparent 40%);
   opacity: 0;
   transition: opacity 0.5s;
   pointer-events: none;
@@ -272,7 +225,7 @@
 .glow-card:hover {
   box-shadow:
     0 30px 60px -20px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(245, 183, 0, 0.15);
+    0 0 0 1px rgba(59, 155, 255, 0.15);
 }
 
 /* ============ Form ============ */
@@ -288,9 +241,9 @@
 }
 .field-input:focus {
   outline: none;
-  border-color: #F5B700;
-  background: rgba(245, 183, 0, 0.06);
-  box-shadow: 0 0 0 4px rgba(245, 183, 0, 0.12), 0 0 20px rgba(245, 183, 0, 0.06);
+  border-color: #3B9BFF;
+  background: rgba(59, 155, 255, 0.06);
+  box-shadow: 0 0 0 4px rgba(59, 155, 255, 0.12), 0 0 20px rgba(59, 155, 255, 0.06);
 }
 .field-label {
   position: absolute;
@@ -305,7 +258,7 @@
 .field-input:focus + .field-label,
 .field-input:not(:placeholder-shown) + .field-label {
   transform: translateY(-10px) scale(0.74);
-  color: #F5B700;
+  color: #3B9BFF;
 }
 
 /* ============ Dialog ============ */
@@ -338,7 +291,7 @@ dialog[open]::backdrop {
 /* ============ Section divider ============ */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(245, 183, 0, 0.3), transparent);
+  background: linear-gradient(90deg, transparent, rgba(59, 155, 255, 0.3), transparent);
   transform-origin: left;
 }
 
@@ -346,106 +299,17 @@ dialog[open]::backdrop {
 .tag-pill {
   padding: 5px 14px;
   border-radius: 9999px;
-  background: rgba(245, 183, 0, 0.1);
-  border: 1px solid rgba(245, 183, 0, 0.2);
+  background: rgba(59, 155, 255, 0.1);
+  border: 1px solid rgba(59, 155, 255, 0.2);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.04em;
-  color: #F5B700;
+  color: #3B9BFF;
   transition: background 0.3s, border-color 0.3s;
 }
 .tag-pill:hover {
-  background: rgba(245, 183, 0, 0.2);
-  border-color: rgba(245, 183, 0, 0.4);
-}
-
-/* ============ FX: Circuit ============ */
-.fx-circuit-track,
-.fx-circuit-bus,
-.fx-circuit-trail { fill: none; stroke-linejoin: round; stroke-linecap: round; }
-.fx-circuit-track { stroke: rgba(201, 206, 214, 0.16); stroke-width: 2; }
-.fx-circuit-bus { stroke: rgba(201, 206, 214, 0.07); stroke-width: 1; transform: translate(12px, 6px); }
-.fx-circuit-trail {
-  stroke: #F5B700;
-  stroke-width: 2.5;
-  filter: drop-shadow(0 0 6px rgba(245, 183, 0, 0.8));
-}
-.fx-node__stub { fill: none; stroke: rgba(201, 206, 214, 0.14); stroke-width: 1.5; transition: stroke 0.5s; }
-.fx-node__pad { fill: rgba(201, 206, 214, 0.2); transition: fill 0.5s; }
-.fx-node__ring { fill: #0B0C0F; stroke: rgba(201, 206, 214, 0.35); stroke-width: 1.5; transition: stroke 0.4s; }
-.fx-node__core { fill: rgba(201, 206, 214, 0.35); transition: fill 0.4s; }
-.fx-node__pulse { fill: none; stroke: #F5B700; opacity: 0; transform-box: fill-box; transform-origin: center; }
-.fx-node.is-on .fx-node__stub { stroke: rgba(245, 183, 0, 0.6); }
-.fx-node.is-on .fx-node__pad,
-.fx-node.is-on .fx-node__core { fill: #F5B700; }
-.fx-node.is-on .fx-node__ring { stroke: #F5B700; }
-.fx-node.is-on .fx-node__pulse { animation: fx-pulse 1.8s ease-out infinite; }
-@keyframes fx-pulse {
-  from { opacity: 0.9; transform: scale(1); }
-  to { opacity: 0; transform: scale(3.2); }
-}
-
-.fx-chip-wrap {
-  position: absolute;
-  width: 96px;
-  height: 96px;
-  transform: translate(-50%, -50%);
-  perspective: 700px;
-}
-.fx-chip-glow {
-  position: absolute;
-  inset: -46px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(245, 183, 0, 0.35), transparent 65%);
-  filter: blur(18px);
-}
-.fx-chip {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transform-style: preserve-3d;
-}
-.fx-chip span {
-  position: absolute;
-  inset: 0;
-  background: url(/logo-mark.webp) center / contain no-repeat;
-}
-
-/* ============ FX: Sun comet ============ */
-.fx-comet-track {
-  fill: none;
-  stroke: rgba(245, 183, 0, 0.28);
-  stroke-width: 2;
-  stroke-dasharray: 0.1 18;
-  stroke-linecap: round;
-}
-.fx-comet-trail {
-  fill: none;
-  stroke: rgba(255, 214, 90, 0.35);
-  stroke-width: 1.2;
-}
-.fx-sun {
-  position: absolute;
-  width: 116px;
-  height: 116px;
-  transform: translate(-50%, -50%);
-}
-.fx-sun__halo {
-  position: absolute;
-  inset: -60px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 200, 40, 0.45), rgba(245, 183, 0, 0.12) 40%, transparent 68%);
-  animation: fx-breathe 3s ease-in-out infinite;
-}
-.fx-sun__core {
-  position: absolute;
-  inset: 34px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 38% 35%, #fffbe8, #ffd34d 45%, #f5b700 75%, #d99a00);
-  box-shadow: 0 0 24px 6px rgba(255, 200, 40, 0.75), 0 0 70px 20px rgba(245, 183, 0, 0.35);
-}
-@keyframes fx-breathe {
-  50% { transform: scale(1.12); opacity: 0.8; }
+  background: rgba(59, 155, 255, 0.2);
+  border-color: rgba(59, 155, 255, 0.4);
 }
 
 /* ============ Reduced motion ============ */

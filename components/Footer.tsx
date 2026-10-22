@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer data-sea className="relative bg-ink overflow-hidden border-t border-white/5">
+    <footer data-sea className="relative z-10 bg-ink/60 backdrop-blur-sm overflow-hidden border-t border-white/5">
       <div className="container-site grid gap-14 sm:grid-cols-2 lg:grid-cols-4 py-[clamp(80px,9vw,120px)]">
         {/* Brand */}
         <div>
@@ -60,7 +60,7 @@ export default function Footer() {
 
       {/* Large scrolling text */}
       <div className="overflow-hidden whitespace-nowrap mt-[clamp(24px,4.5vw,64px)]">
-        <span className="inline-block font-display font-black text-[clamp(68px,15vw,240px)] leading-none tracking-tighter uppercase text-transparent [-webkit-text-stroke:1px_rgba(245,183,0,0.15)] animate-marquee">
+        <span className="inline-block font-display font-black text-[clamp(68px,15vw,240px)] leading-none tracking-tighter uppercase text-transparent [-webkit-text-stroke:1px_rgba(59,155,255,0.15)] animate-marquee">
           iTech Evolution &middot; iTech Evolution &middot; iTech Evolution &middot; iTech Evolution &middot;&nbsp;
           iTech Evolution &middot; iTech Evolution &middot; iTech Evolution &middot; iTech Evolution &middot;&nbsp;
         </span>

@@ -102,8 +102,8 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" data-sea className="relative section-pad bg-ink overflow-clip">
-      <div data-float className="absolute -left-[20vw] top-[10%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(245,183,0,0.18),transparent_65%)] blur-[100px] opacity-40" />
+    <section id="services" data-sea className="relative section-pad overflow-clip">
+      <div data-float className="absolute -left-[20vw] top-[10%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(59,155,255,0.18),transparent_65%)] blur-[100px] opacity-40" />
       <div data-float className="absolute right-[-15vw] bottom-[15%] w-[35vw] h-[35vw] rounded-full bg-[radial-gradient(circle,rgba(201,206,214,0.14),transparent_65%)] blur-[80px] opacity-40" />
 
       <div className="container-site relative z-10">
@@ -138,14 +138,14 @@ export default function Services() {
                   sizes="(min-width: 1280px) 400px, (min-width: 768px) 50vw, 100vw"
                   className="object-cover grayscale-[35%] group-hover:grayscale-0 group-hover:scale-[1.07] transition-all duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/40 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink-2 via-ink-2/40 to-transparent" />
                 <span className="absolute right-5 top-4 font-display font-black text-[44px] leading-none text-transparent [-webkit-text-stroke:1px_rgba(255,255,255,0.55)]">
                   {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
 
               <div className="relative flex flex-col flex-1 px-[clamp(24px,3vw,34px)] pb-[clamp(26px,3vw,36px)]">
-                <div className="-mt-9 mb-6 w-[64px] h-[64px] rounded-2xl bg-ink-2 border border-accent/40 flex items-center justify-center text-accent shadow-[0_14px_30px_-10px_rgba(0,0,0,0.8)] group-hover:bg-accent group-hover:text-ink transition-colors duration-500">
+                <div className="-mt-9 mb-6 w-[64px] h-[64px] rounded-2xl bg-ink-2 border border-accent/40 flex items-center justify-center text-accent shadow-[0_14px_30px_-10px_rgba(0,0,0,0.8)] group-hover:bg-accent group-hover:text-white transition-colors duration-500">
                   {s.icon}
                 </div>
                 <h3 className="font-display font-black text-[clamp(20px,1.8vw,24px)] uppercase tracking-tight text-white mb-3.5 leading-tight">

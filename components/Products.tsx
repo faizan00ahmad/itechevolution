@@ -24,8 +24,8 @@ const products = [
 
 export default function Products() {
   return (
-    <section id="products" data-sea className="relative section-pad bg-ink overflow-clip">
-      <div data-float className="absolute -right-[18vw] top-[20%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(245,183,0,0.2),transparent_65%)] blur-[100px] opacity-40" />
+    <section id="products" data-sea className="relative section-pad overflow-clip">
+      <div data-float className="absolute -right-[18vw] top-[20%] w-[50vw] h-[50vw] rounded-full bg-[radial-gradient(circle,rgba(59,155,255,0.2),transparent_65%)] blur-[100px] opacity-40" />
 
       <div className="container-site relative z-10">
         <header className="max-w-[860px] mb-[clamp(60px,8vw,100px)]">

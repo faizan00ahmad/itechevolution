@@ -55,7 +55,7 @@ function Track({ items, outline, reverse }: { items: string[]; outline?: boolean
 export default function Marquee() {
   return (
     <section
-      className="relative py-[clamp(40px,5.5vw,72px)] overflow-hidden border-y border-white/5 bg-ink"
+      className="relative py-[clamp(40px,5.5vw,72px)] overflow-hidden border-y border-white/5 bg-ink/40 backdrop-blur-[2px]"
       aria-label="Capabilities"
     >
       <Track items={row1} />
